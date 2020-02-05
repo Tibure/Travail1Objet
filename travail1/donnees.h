@@ -6,7 +6,11 @@ const int maxCartes = 52;
 
 class Donnees
 {
-	public:
-
+public:
+	Donnees();
+	Joueur Joueur1;
+	Joueur Joueur2;
+	void creerTableauCarte();
+	Carte lesCartes[52];
 };
 

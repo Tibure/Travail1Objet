@@ -8,6 +8,10 @@ Joueur::Joueur()
 	nom = "";
 	nombreVictoires = 0;
 	nombreDefaites = 0;
+	for (int i = 0; i < maxCartesAJouer; i++)
+	{
+		mainDuJoueur[i] = NULL;
+	}
 }
 
 void Joueur::EnleverToutesLesCartes()
