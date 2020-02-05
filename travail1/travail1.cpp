@@ -32,4 +32,5 @@ void Jouer()
 
 void InitialiserJoueurs()
 {
+
 }
