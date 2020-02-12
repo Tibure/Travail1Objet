@@ -27,10 +27,25 @@ int main()
 
 void Jouer() 
 {
-
+	int nombreCartesAJouer = 0;
+	cout << "Combien de cartes doit-on distribuer? \n";
+	cin >> nombreCartesAJouer;
+	VerifierNombreCarteADistribuer(nombreCartesAJouer);
 }
 
 void InitialiserJoueurs()
+{
+	cout << "Bienvenue au jeu! Quel est le nom du premier joueur? \n";
+	string nomJoueur = "";
+	cin >> nomJoueur;
+	leJeu.Joueur1.SetNomJoueur(nomJoueur);
+	cout << "Bien! Quel est est le nom du deuxieme joueur? \n";
+	cin >> nomJoueur;
+	leJeu.Joueur2.SetNomJoueur(nomJoueur);
+
+}
+
+void VerifierNombreCarteADistribuer(int nombreCarteChoisi)
 {
 
 }

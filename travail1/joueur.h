@@ -12,12 +12,18 @@ private:
 	string nom;
 	int nombreVictoires;
 	int nombreDefaites;
-	Carte* mainDuJoueur[maxCartesAJouer];
+	Carte* mainDuJoueur[26];
 public:
 	Joueur();
 	void EnleverToutesLesCartes();
 	void AjouterUneCarte(Carte*);
-	void SetNomJoueur(string);
+	const void SetNomJoueur(string);
+	Carte * GetCarteJoueurTableau(int);
+	const string getNomJoueur();
+	const int getNombreDefaitesJoueur();
+	const int getNombreVictoiresJoueur();
+	void AjouterUneDefaite();
+	void AjouterUneVictoire();
 
 
 

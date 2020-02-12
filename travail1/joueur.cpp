@@ -37,8 +37,40 @@ void Joueur::AjouterUneCarte(Carte* cartePigee)
 	}
 }
 
-void Joueur::SetNomJoueur(string nomJoueur)
+Carte * Joueur::GetCarteJoueurTableau(int indice)
+{
+	return mainDuJoueur[indice];
+}
+
+const void Joueur::SetNomJoueur(string nomJoueur)
 {
 	nom = nomJoueur;
 }
+
+void Joueur::AjouterUneDefaite()
+{
+	nombreDefaites++;
+}
+
+void Joueur::AjouterUneVictoire()
+{
+	nombreVictoires++;
+}
+
+const int Joueur::getNombreDefaitesJoueur()
+{
+	return nombreDefaites;
+}
+
+const int Joueur::getNombreVictoiresJoueur()
+{
+	return nombreVictoires;
+
+}
+
+const string Joueur::getNomJoueur()
+{
+	return nom;
+}
+
 
