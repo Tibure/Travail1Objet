@@ -28,9 +28,12 @@ int main()
 void Jouer() 
 {
 	int nombreCartesAJouer = 0;
-	cout << "Combien de cartes doit-on distribuer? \n";
+	cout << "Combien de cartes doit-on distribuer par joueur? \n";
 	cin >> nombreCartesAJouer;
 	VerifierNombreCarteADistribuer(nombreCartesAJouer);
+	MelangerLesCartesDuPaquet();
+	DistribuerCartesAuxJoueurs(nombreCartesAJouer);
+
 }
 
 void InitialiserJoueurs()
@@ -47,5 +50,51 @@ void InitialiserJoueurs()
 
 void VerifierNombreCarteADistribuer(int nombreCarteChoisi)
 {
+	
+}
+
+void MelangerLesCartesDuPaquet()
+{
+	int nombreCartes = 52;
+	Carte carteTemporaire;
+	int brasse;
+	for (brasse = 0; brasse < 500; brasse++)
+	{
+
+	}
+}
+
+void DistribuerCartesAuxJoueurs(int nombreCarteChoisi)
+{
+	int cpt = 1;
+	int i;
+	nombreCarteChoisi = nombreCarteChoisi * 2;
+	for (i = 0; i < nombreCarteChoisi; i++)
+	{
+		if (cpt == 1)
+		{
+			leJeu.Joueur1.AjouterUneCarte(&leJeu.lesCartes[i]);
+			cpt = 2;
+		}
+		else if (cpt == 2)
+		{
+			leJeu.Joueur2.AjouterUneCarte(&leJeu.lesCartes[i]);
+			cpt = 1;
+		}
+	}
+}
+
+void Afficher(Joueur aJoueur)
+{
+	int totalDesCartes = 0;
+	int indiceTableau = 0;
+	cout << aJoueur.getNomJoueur << "\n";
+	while (indiceTableau < 52 && aJoueur.GetCarteJoueurTableau(indiceTableau) != NULL)
+	{
+		cout << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur() << ", " << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetAtout() << "\n";
+		totalDesCartes = totalDesCartes + aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur();
+		indiceTableau++;
+	}
+	cout << "Le total du joueur nomme "<< aJoueur.getNomJoueur()<< "est de " << totalDesCartes << ". \n";
 
 }
