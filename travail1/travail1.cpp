@@ -126,3 +126,22 @@ void AttribuerLesVictoires(int resultatJoueur1, int resultatJoueur2)
 
 	}
 }
+
+void PartieTerminee()
+{
+	cout << "Joueur 1: " << leJeu.Joueur1.getNomJoueur() << ": " << leJeu.Joueur1.getNombreVictoiresJoueur() << " victoires et " << leJeu.Joueur1.getNombreDefaitesJoueur() << " defaites. \n";
+	cout << "Joueur 2: " << leJeu.Joueur2.getNomJoueur() << ": " << leJeu.Joueur2.getNombreVictoiresJoueur() << " victoires et " << leJeu.Joueur2.getNombreDefaitesJoueur() << " defaites. \n";
+	if (leJeu.Joueur1.getNombreVictoiresJoueur() == leJeu.Joueur2.getNombreVictoiresJoueur())
+	{
+		cout << "La partie est nulle! Bravo aux deux. \n";
+
+	}
+	else if (leJeu.Joueur1.getNombreVictoiresJoueur() < leJeu.Joueur2.getNombreVictoiresJoueur())
+	{
+		cout << "Bravo a " << leJeu.Joueur2.getNomJoueur() << "! Tu as gagné la partie! \n";
+	}
+	else
+	{
+		cout << "Bravo a " << leJeu.Joueur1.getNomJoueur() << "! Tu as gagné la partie! \n";
+	}
+}

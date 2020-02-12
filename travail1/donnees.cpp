@@ -17,23 +17,21 @@ void Donnees::creerTableauCarte()
 			if (i == 0)
 			{
 				nouvelleCarte.InitialiserCarte(j, "pique");
-				lesCartes[cpt] = nouvelleCarte;
 			}
 			if (i == 1)
 			{
 				nouvelleCarte.InitialiserCarte(j, "trefle");
-				lesCartes[cpt] = nouvelleCarte;
 			}
 			if (i == 2)
 			{
 				nouvelleCarte.InitialiserCarte(j, "coeur");
-				lesCartes[cpt] = nouvelleCarte;
 			}
 			if (i == 3)
 			{
 				nouvelleCarte.InitialiserCarte(j, "carreau");
-				lesCartes[cpt] = nouvelleCarte;
 			}
+			lesCartes[cpt] = nouvelleCarte;
+			cpt++;
 		}
 	}
 }
