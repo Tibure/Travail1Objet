@@ -11,6 +11,12 @@ Donnees leJeu;
 
 void InitialiserJoueurs();
 void Jouer();
+void MelangerLesCartesDuPaquet();
+void DistribuerCartesAuxJoueurs(int);
+int AfficherResultatDunJoueur(Joueur);
+void AttribuerLesVictoires(int, int);
+void PartieTerminee();
+
 
 int main() 
 {
@@ -21,8 +27,10 @@ int main()
 	{
 		Jouer();
 		cout << "\nTermine (n/o) ? ";
-		cin >> fini;		
+		cin >> fini;
+	
 	}
+	PartieTerminee();
 }
 
 void Jouer() 
@@ -30,14 +38,15 @@ void Jouer()
 	int nombreCartesAJouer = 0;
 	cout << "Combien de cartes doit-on distribuer par joueur? \n";
 	cin >> nombreCartesAJouer;
-	VerifierNombreCarteADistribuer(nombreCartesAJouer);
+	if (nombreCartesAJouer > maxCartesAJouer)
+	{
+		nombreCartesAJouer = maxCartesAJouer;
+	}
 	MelangerLesCartesDuPaquet();
 	DistribuerCartesAuxJoueurs(nombreCartesAJouer);
 	int resultatPremierJoueur = AfficherResultatDunJoueur(leJeu.Joueur1);
 	int resultatDeuxiemeJoueur = AfficherResultatDunJoueur(leJeu.Joueur2);
 	AttribuerLesVictoires(resultatPremierJoueur, resultatDeuxiemeJoueur);
-	
-
 }
 
 void InitialiserJoueurs()
@@ -52,19 +61,21 @@ void InitialiserJoueurs()
 
 }
 
-void VerifierNombreCarteADistribuer(int nombreCarteChoisi)
-{
-	
-}
+
 
 void MelangerLesCartesDuPaquet()
 {
+	int carte1, carte2;
 	int nombreCartes = 52;
 	Carte carteTemporaire;
 	int brasse;
 	for (brasse = 0; brasse < 500; brasse++)
 	{
-
+		carte1 = (rand() % 51);
+		carte2 = (rand() % 51);
+		carteTemporaire = leJeu.lesCartes[carte1];
+		leJeu.lesCartes[carte1] = leJeu.lesCartes[carte2];
+		leJeu.lesCartes[carte2] = carteTemporaire;
 	}
 }
 
@@ -92,14 +103,14 @@ int AfficherResultatDunJoueur(Joueur aJoueur)
 {
 	int totalDesCartes = 0;
 	int indiceTableau = 0;
-	cout << aJoueur.getNomJoueur << "\n";
+	cout << aJoueur.getNomJoueur() << "\n";
 	while (indiceTableau < 52 && aJoueur.GetCarteJoueurTableau(indiceTableau) != NULL)
 	{
 		cout << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur() << ", " << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetAtout() << "\n";
 		totalDesCartes = totalDesCartes + aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur();
 		indiceTableau++;
 	}
-	cout << "Le total du joueur nomme "<< aJoueur.getNomJoueur()<< "est de " << totalDesCartes << ". \n";
+	cout << "Le total du joueur nomme "<< aJoueur.getNomJoueur()<< " est de " << totalDesCartes << ". \n";
 	return totalDesCartes;
 }
 
@@ -125,6 +136,8 @@ void AttribuerLesVictoires(int resultatJoueur1, int resultatJoueur2)
 		leJeu.Joueur2.AjouterUneDefaite();
 
 	}
+	leJeu.Joueur1.EnleverToutesLesCartes();
+	leJeu.Joueur2.EnleverToutesLesCartes();
 }
 
 void PartieTerminee()

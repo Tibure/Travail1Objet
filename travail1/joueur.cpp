@@ -25,7 +25,7 @@ void Joueur::EnleverToutesLesCartes()
 void Joueur::AjouterUneCarte(Carte* cartePigee)
 {
 	bool trouve = false;
-	int i;
+	int i=0;
 	while (trouve == false)
 	{
 		if (mainDuJoueur[i] == NULL)
