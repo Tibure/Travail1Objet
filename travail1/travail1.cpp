@@ -33,6 +33,10 @@ void Jouer()
 	VerifierNombreCarteADistribuer(nombreCartesAJouer);
 	MelangerLesCartesDuPaquet();
 	DistribuerCartesAuxJoueurs(nombreCartesAJouer);
+	int resultatPremierJoueur = AfficherResultatDunJoueur(leJeu.Joueur1);
+	int resultatDeuxiemeJoueur = AfficherResultatDunJoueur(leJeu.Joueur2);
+	AttribuerLesVictoires(resultatPremierJoueur, resultatDeuxiemeJoueur);
+	
 
 }
 
@@ -84,7 +88,7 @@ void DistribuerCartesAuxJoueurs(int nombreCarteChoisi)
 	}
 }
 
-void Afficher(Joueur aJoueur)
+int AfficherResultatDunJoueur(Joueur aJoueur)
 {
 	int totalDesCartes = 0;
 	int indiceTableau = 0;
@@ -96,5 +100,29 @@ void Afficher(Joueur aJoueur)
 		indiceTableau++;
 	}
 	cout << "Le total du joueur nomme "<< aJoueur.getNomJoueur()<< "est de " << totalDesCartes << ". \n";
+	return totalDesCartes;
+}
 
+void AttribuerLesVictoires(int resultatJoueur1, int resultatJoueur2)
+{
+	if (resultatJoueur1 == resultatJoueur2)
+	{
+		/* cas égalité*/
+		cout << "C'ette partie est nulle! \n";
+	}
+	if (resultatJoueur1 < resultatJoueur2)
+	{
+		/* joueur 2 gagne*/
+		cout << "Bravo au joueur " << leJeu.Joueur2.getNomJoueur() << "! \n";
+		leJeu.Joueur2.AjouterUneVictoire();
+		leJeu.Joueur1.AjouterUneDefaite();
+	}
+	else
+	{
+		/* joueur 1 gagne*/
+		cout << "Bravo au joueur " << leJeu.Joueur2.getNomJoueur() << "! \n";
+		leJeu.Joueur1.AjouterUneVictoire();
+		leJeu.Joueur2.AjouterUneDefaite();
+
+	}
 }
