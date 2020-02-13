@@ -28,7 +28,7 @@ int main()
 		Jouer();
 		cout << "\nTermine (n/o) ? ";
 		cin >> fini;
-	
+		ClrScr();
 	}
 	PartieTerminee();
 }
@@ -41,6 +41,7 @@ void Jouer()
 	if (nombreCartesAJouer > maxCartesAJouer)
 	{
 		nombreCartesAJouer = maxCartesAJouer;
+		
 	}
 	MelangerLesCartesDuPaquet();
 	DistribuerCartesAuxJoueurs(nombreCartesAJouer);
@@ -55,10 +56,11 @@ void InitialiserJoueurs()
 	string nomJoueur = "";
 	cin >> nomJoueur;
 	leJeu.Joueur1.SetNomJoueur(nomJoueur);
+	ClrScr();
 	cout << "Bien! Quel est est le nom du deuxieme joueur? \n";
 	cin >> nomJoueur;
 	leJeu.Joueur2.SetNomJoueur(nomJoueur);
-
+	ClrScr();
 }
 
 
@@ -69,10 +71,10 @@ void MelangerLesCartesDuPaquet()
 	int nombreCartes = 52;
 	Carte carteTemporaire;
 	int brasse;
-	for (brasse = 0; brasse < 500; brasse++)
+	for (brasse = 0; brasse < 501; brasse++)
 	{
-		carte1 = (rand() % 51);
-		carte2 = (rand() % 51);
+		carte1 = (rand() % 52);
+		carte2 = (rand() % 52);
 		carteTemporaire = leJeu.lesCartes[carte1];
 		leJeu.lesCartes[carte1] = leJeu.lesCartes[carte2];
 		leJeu.lesCartes[carte2] = carteTemporaire;
@@ -104,7 +106,7 @@ int AfficherResultatDunJoueur(Joueur aJoueur)
 	int totalDesCartes = 0;
 	int indiceTableau = 0;
 	cout << aJoueur.getNomJoueur() << "\n";
-	while (indiceTableau < 52 && aJoueur.GetCarteJoueurTableau(indiceTableau) != NULL)
+	while (indiceTableau < 26 && aJoueur.GetCarteJoueurTableau(indiceTableau) != NULL)
 	{
 		cout << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur() << ", " << aJoueur.GetCarteJoueurTableau(indiceTableau)->GetAtout() << "\n";
 		totalDesCartes = totalDesCartes + aJoueur.GetCarteJoueurTableau(indiceTableau)->GetValeur();
@@ -151,10 +153,10 @@ void PartieTerminee()
 	}
 	else if (leJeu.Joueur1.getNombreVictoiresJoueur() < leJeu.Joueur2.getNombreVictoiresJoueur())
 	{
-		cout << "Bravo a " << leJeu.Joueur2.getNomJoueur() << "! Tu as gagné la partie! \n";
+		cout << "Bravo a " << leJeu.Joueur2.getNomJoueur() << "! Tu as gagne la partie! \n";
 	}
 	else
 	{
-		cout << "Bravo a " << leJeu.Joueur1.getNomJoueur() << "! Tu as gagné la partie! \n";
+		cout << "Bravo a " << leJeu.Joueur1.getNomJoueur() << "! Tu as gagne la partie! \n";
 	}
 }
